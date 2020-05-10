@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-class MemberLoginForm extends Component{
+class MemberJoinForm extends Component{
 
   constructor(props) {
     super(props);
@@ -20,12 +20,12 @@ class MemberLoginForm extends Component{
   };
 
   async handleSubmit(e){
-    e.preventDefault();
+      e.preventDefault();
       var _id = this.state.id;
       console.log(_id)
       var _pw = this.state.pw;
       console.log(_pw)
-      let url = '/member/login';
+      let url = '/member/join';
       let options = {
       method : 'POST',
       url : url,
@@ -50,15 +50,15 @@ class MemberLoginForm extends Component{
     render(){
       return(
         <article>
-          <h2>Login</h2>
+            <h2>Join</h2>
               <form onSubmit = {this.handleSubmit.bind(this)}>
                 <p><input type="text" name = "id"  value = {this.state.id} onChange = {this.handleChange.bind(this)} placeholder = "id"></input></p>
                 <p><input type="text" name = "pw"  vlaue = {this.state.pw} onChange = {this.handleChange.bind(this)} placeholder = "pw"></input></p>
-                <p><input type = "submit" onClick = {this.send} ></input></p>
+                <p><input type = "submit"></input></p>
               </form>
           </article>
       );
     }
   }
 
-  export default MemberLoginForm;
+  export default MemberJoinForm;
