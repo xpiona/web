@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="member">
+
+	<insert id="insert" parameterType="com.jh.p.member.vo.MemberVo">
+        INSERT INTO MEMBER (MEMID, MEMPW) VALUES (#{memId, jdbcType=VARCHAR}, #{memPw, jdbcType=VARCHAR})
+    </insert>
+    
+    <select id="search" parameterType="com.jh.p.member.vo.MemberVo" resultType="com.jh.p.member.vo.MemberVo">
+    	SELECT MEMID,MEMPW FROM MEMBER
+    	WHERE MEMID = #{memId, jdbcType=VARCHAR} AND MEMPW = #{memPw, jdbcType=VARCHAR}
+    </select>
+    
+    
+	<update id="modify" parameterType="com.jh.p.member.vo.MemberVo">
+		UPDATE MEMBER SET MEMPW = #{memPw, jdbcType=VARCHAR} WHERE MEMID = #{memId, jdbcType=VARCHAR}
+	</update>
+	
+</mapper>
