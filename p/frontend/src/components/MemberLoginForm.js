@@ -1,8 +1,9 @@
+
 import React, { Component } from 'react';
 import axios from "axios";
 
 class MemberLoginForm extends Component{
-
+  
   constructor(props) {
     super(props);
      this.state = {
@@ -43,7 +44,10 @@ class MemberLoginForm extends Component{
       let responseOK = response && response.status === 200 && response.statusText === 'OK';
       if (responseOK) {
         let data = await response.data;
+        console.log("memberloginform : console. ");
         console.log(data);
+        if(data === 'success'){ }
+        
       }
     }
 

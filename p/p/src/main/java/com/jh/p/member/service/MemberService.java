@@ -21,9 +21,9 @@ public class MemberService implements IMemberService {
 	public MemberVo memberSearch(MemberVo member) {
 		MemberVo mem = dao.memberSelect(member);
 		if (mem == null) {
-			System.out.println("Login Fail!!");
+			System.out.println("service : Login Fail!!");
 		} else {
-			System.out.println("Login Success!!");
+			System.out.println("service : Login Success!!");
 		}
 		return mem;
 	}
