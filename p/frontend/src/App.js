@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import './App.css';
-// import { Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom"
 
@@ -16,16 +16,16 @@ class App extends Component{
           <Router>
             <header>
               <Link to="/">
-                <button>Welcome</button>
+                <Button>Welcome</Button>
               </Link>
               <Link to="/Member">
-                <button>Member</button>
+                <Button>Member</Button>
               </Link>
               <Link to="/NavCon">
-                <button>NavCon</button>
+                <Button>NavCon</Button>
               </Link>
             </header>
-            <hr />
+
             <main>
               <Switch>
                 <Route exact path="/" component={Welcome} />

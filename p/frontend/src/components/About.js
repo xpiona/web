@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Button } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 import MemberLoginForm from "./MemberLoginForm"
 
@@ -9,12 +9,13 @@ class Member extends Component{
 
   constructor(props) {
     super(props);
-     this.state = {isLoggedIn : false}
+     this.state = {
+      isLogin : false
+     }
   };
   
   async get_a(e) {
-    // e.preventDefault();
-    console.log("getting start");
+    e.preventDefault();
     let url = '/member/session';
     let options = {
       method : 'GET',
@@ -29,27 +30,22 @@ class Member extends Component{
     if (responseOK) {
       let data = await response.data;
       if(data !== null){
-        this.setState({ isLoggedIn : true });
+        this.setState({ isLogin : true });
       }
     }
   }
 
 
     render(){
-
-      this.get_a();
-      const isLoggedIn = this.state.isLoggedIn;
-      let button = null;
-      if (isLoggedIn) {
-        // button = <Button onClick={alert(1)} />;
-      } else{
-        // button = <Button onClick={alert(2)} />;
-      }
-
       return(
+
         <div>
           <MemberLoginForm></MemberLoginForm>
-          {button}
+          {
+            !this.state.isLogin && <Redirect to="/"/>
+          }
+          로그인 되었습니다.
+          
         </div>
 
       );
