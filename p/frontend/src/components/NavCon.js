@@ -70,10 +70,10 @@ class NavCon extends Component{
                     <h3 className = "text-center"> Search For Any Movie</h3>
                         <form id = "searchForm">
 				            <input type = "text" onChange = {this.handleChange.bind(this)} className = "form-control" id = "searchText" placeholder="Search Movie..."/>
-                            <button onClick = {function(e){
+                            <button  onClick = {function(e){
                                 this.getMovies();
                                 e.preventDefault();
-                            }.bind(this)}>search</button>
+                            }.bind(this)}></button>
 			            </form>
 		        </div>
 	        </div>

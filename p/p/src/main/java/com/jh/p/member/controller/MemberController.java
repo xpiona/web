@@ -72,8 +72,8 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		MemberVo member = (MemberVo) session.getAttribute("member");
 		logger.info(member.getMemId());
-        return member;
-    }
+		return member;
+}
 
 	// // Join
 	// @RequestMapping(value = "/joinForm")

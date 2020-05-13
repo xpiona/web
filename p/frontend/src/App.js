@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import './App.css';
 import { Button } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootswatch/dist/darkly/bootstrap.min.css"; 
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom"
 
 import NavCon from "./components/NavCon"

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Button } from 'reactstrap';
 
 import MemberLoginForm from "./MemberLoginForm"
-
+import About from "./About"
 
 class Member extends Component{
 
@@ -41,15 +40,14 @@ class Member extends Component{
       const isLoggedIn = this.state.isLoggedIn;
       let button = null;
       if (isLoggedIn) {
-        // button = <Button onClick={alert(1)} />;
+        button = <About/>
       } else{
-        // button = <Button onClick={alert(2)} />;
+        button = <MemberLoginForm/>;
       }
 
       return(
         <div>
-          <MemberLoginForm></MemberLoginForm>
-          {button}
+          {button} 
         </div>
 
       );
