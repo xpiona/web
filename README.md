@@ -1,2 +1,0 @@
-# web
-studying for web
