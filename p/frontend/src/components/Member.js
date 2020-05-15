@@ -8,11 +8,12 @@ class Member extends Component{
 
   constructor(props) {
     super(props);
-     this.state = {isLoggedIn : false}
+     this.state = {
+      IsLoggedIn : false
+     }
   };
-  
-  async get_a(e) {
-    console.log("getting start");
+
+  async componentWillMount() {
     let url = '/member/session';
     let options = {
       method : 'GET',
@@ -25,35 +26,24 @@ class Member extends Component{
     let response = await axios(options);
     let responseOK = response && response.status === 200 && response.statusText === 'OK';
     if (responseOK) {
-      let data = await response.data;
-      if(data !== null){
-        this.setState({ isLoggedIn : true });
-      }
+      // let data = await response.data.memId;
+      this.setState({
+        IsLoggedIn : true
+      })
     }
   }
 
 
     render(){
 
-      // this.get_a();
-      // const isLoggedIn = this.state.isLoggedIn;
-      // let button = null;
-      // if (isLoggedIn) {
-      //   button = <About/>
-      // } else{
-      //   button = <MemberLoginForm/>;
-      // }
-
-      if(this.state.isLoggedIn === true){
+      if(this.state.IsLoggedIn === true){
         return <About></About>
       }
 
       return(
         <div>
           <MemberLoginForm></MemberLoginForm>
-          {/* {button}  */}
         </div>
-
       );
     }
   }

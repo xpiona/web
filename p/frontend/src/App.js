@@ -9,6 +9,7 @@ import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom"
 import NavCon from "./components/NavCon"
 import Member from "./components/Member"
 import Welcome from "./components/Welcome"
+import Board from "./components/Board"
 
 
 class App extends Component{
@@ -25,6 +26,9 @@ class App extends Component{
               <Link to="/NavCon">
                 <Button>NavCon</Button>
               </Link>
+              <Link to="/Board">
+                <Button>Board</Button>
+              </Link>
             </header>
 
             <main>
@@ -32,6 +36,7 @@ class App extends Component{
                 <Route exact path="/" component={Welcome} />
                 <Route path="/Member" component={Member} />
                 <Route path="/NavCon" component={NavCon} />
+                <Route path="/Board" component={Board} />
               </Switch>
             </main>
           </Router>

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import axios from "axios";
 
 class GetSession extends Component{
-    
-    state = {
-        word: null
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      word: ''
+    };
+    this.get_a = this.get_a.bind(this);
+  }
+
 
     async get_f(e) {
         e.preventDefault();
@@ -34,17 +38,24 @@ class GetSession extends Component{
         let responseOK = response && response.status === 200 && response.statusText === 'OK';
         if (responseOK) {
           let data = await response.data;
+          console.log("aaaaaaaaaa");
           console.log(data);
+          this.setState({word : data});
+          // return data;
         }
-
       }
 
     render(){
+
+      this.get_a(e)
+
       return(
           <div>
               <h2>here</h2>
-              <Button onClick = {this.get_a.bind(this)}> Session</Button>
+              {/* {this.get_a} */}
+              {/* <Button onClick = {this.get_a.bind(this)}> Session</Button> */}
               {this.state.word}
+              
           </div>
       );
     }

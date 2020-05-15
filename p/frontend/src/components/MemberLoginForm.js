@@ -61,6 +61,7 @@ class MemberLoginForm extends Component{
     render(){
 
       if(this.state.isLoggedIn === true){
+
         return <About></About>
       }
 
