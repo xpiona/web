@@ -12,7 +12,6 @@ class Member extends Component{
   };
   
   async get_a(e) {
-    // e.preventDefault();
     console.log("getting start");
     let url = '/member/session';
     let options = {
@@ -36,18 +35,23 @@ class Member extends Component{
 
     render(){
 
-      this.get_a();
-      const isLoggedIn = this.state.isLoggedIn;
-      let button = null;
-      if (isLoggedIn) {
-        button = <About/>
-      } else{
-        button = <MemberLoginForm/>;
+      // this.get_a();
+      // const isLoggedIn = this.state.isLoggedIn;
+      // let button = null;
+      // if (isLoggedIn) {
+      //   button = <About/>
+      // } else{
+      //   button = <MemberLoginForm/>;
+      // }
+
+      if(this.state.isLoggedIn === true){
+        return <About></About>
       }
 
       return(
         <div>
-          {button} 
+          <MemberLoginForm></MemberLoginForm>
+          {/* {button}  */}
         </div>
 
       );

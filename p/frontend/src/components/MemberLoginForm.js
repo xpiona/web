@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import axios from "axios";
+import About from "./About"
+// import { Redirect } from "react-router-dom"
 
 class MemberLoginForm extends Component{
   
@@ -8,7 +10,8 @@ class MemberLoginForm extends Component{
     super(props);
      this.state = {
       id : '',
-      pw : ''
+      pw : '',
+      isLoggedIn : false
      }
   };
 
@@ -21,7 +24,7 @@ class MemberLoginForm extends Component{
   };
 
   async handleSubmit(e){
-    e.preventDefault();
+      e.preventDefault();
       var _id = this.state.id;
       console.log(_id)
       var _pw = this.state.pw;
@@ -46,12 +49,21 @@ class MemberLoginForm extends Component{
         let data = await response.data;
         console.log("memberloginform : console. ");
         console.log(data);
-        if(data === 'success'){ }
-        
+        if(data === 'success'){
+          this.setState({ isLoggedIn : true });
+        }
+        // const { from } = window.location.state || { from: { pathname: "/" } }
+        // if(data === 'success'){ return <Redirect to={from} /> }
+        // if(data === 'success'){ return <Redirect to='/' /> }
       }
     }
 
     render(){
+
+      if(this.state.isLoggedIn === true){
+        return <About></About>
+      }
+
       return(
         <article>
           <h2>Login</h2>
