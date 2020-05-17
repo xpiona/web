@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-import MemberLoginForm from "./MemberLoginForm"
 import About from "./About"
+import MemberLoginForm from "./MemberLoginForm"
+
 
 class Member extends Component{
 
@@ -26,10 +27,14 @@ class Member extends Component{
     let response = await axios(options);
     let responseOK = response && response.status === 200 && response.statusText === 'OK';
     if (responseOK) {
-      // let data = await response.data.memId;
-      this.setState({
-        IsLoggedIn : true
-      })
+      let data = await response.data.memId;
+      if(data !== undefined){
+        console.log(data)
+        this.setState({
+          IsLoggedIn : true
+        })
+      }
+
     }
   }
 
@@ -39,12 +44,14 @@ class Member extends Component{
       if(this.state.IsLoggedIn === true){
         return <About></About>
       }
-
-      return(
-        <div>
-          <MemberLoginForm></MemberLoginForm>
-        </div>
-      );
+      else{
+        return(
+          <div>
+            <MemberLoginForm></MemberLoginForm>
+          </div>
+        );
+      }
+      
     }
   }
 

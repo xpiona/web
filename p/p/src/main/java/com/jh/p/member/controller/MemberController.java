@@ -51,7 +51,7 @@ public class MemberController {
 	public String join(@RequestBody MemberVo member, HttpSession session) {
 		logger.info("=============================JOIN=================================");
 		service.memberRegister(member);
-		return "/member/joinOk";
+		return "join_Success";
 	}
 
 	// @ResponseBody
@@ -71,8 +71,16 @@ public class MemberController {
 		logger.info("=============================SESSION=================================");
 		HttpSession session = request.getSession();
 		MemberVo member = (MemberVo) session.getAttribute("member");
-		logger.info(member.getMemId());
+		// logger.info(member.getMemId());
 		return member;
+}
+
+//logout
+@ResponseBody
+@RequestMapping(value="/logout")
+public String logout(MemberVo member, HttpSession session) {
+	session.invalidate();
+	return "logout_success";
 }
 
 	// // Join

@@ -11,7 +11,6 @@ import Member from "./components/Member"
 import Welcome from "./components/Welcome"
 import Board from "./components/Board"
 
-
 class App extends Component{
       render() {
         return (
