@@ -40,7 +40,6 @@ class Member extends Component{
 
 
     render(){
-
       if(this.state.IsLoggedIn === true){
         return <About></About>
       }

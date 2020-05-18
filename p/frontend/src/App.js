@@ -10,6 +10,7 @@ import NavCon from "./components/NavCon"
 import Member from "./components/Member"
 import Welcome from "./components/Welcome"
 import Board from "./components/Board"
+import MemberModifyForm from "./components/MemberModifyForm"
 
 class App extends Component{
       render() {
@@ -36,6 +37,7 @@ class App extends Component{
                 <Route path="/Member" component={Member} />
                 <Route path="/NavCon" component={NavCon} />
                 <Route path="/Board" component={Board} />
+                <Route path="/MemberModifyForm" component={MemberModifyForm}/>
               </Switch>
             </main>
           </Router>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
-// import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Button } from 'reactstrap';
 import MemberLoginForm from "./MemberLoginForm"
-class About extends Component{
 
+class About extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -67,8 +67,9 @@ class About extends Component{
 
       return( 
         <div>
-           Hi, {this.state.word} 로그인 되었습니다.
-           <Button onClick = {this.logout.bind(this)}> 로그아웃 </Button>
+          Hi, {this.state.word} 로그인 되었습니다.
+          <Button onClick = {this.logout.bind(this)}> 로그아웃 </Button>
+          <Link to="/MemberModifyForm">MemberModifyForm</Link>
         </div>
       );
     }

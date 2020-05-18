@@ -54,17 +54,6 @@ public class MemberController {
 		return "join_Success";
 	}
 
-	// @ResponseBody
-	// @RequestMapping(value = "/session", method = RequestMethod.POST)
-	// public String session(HttpServletRequest request) {
-	// 	logger.info("=============================SESSION=================================");
-	// 	HttpSession session = request.getSession();
-	// 	MemberVo member = (MemberVo) session.getAttribute("member");
-	// 	logger.info(member.getMemId());
-
-	// 	return "/member/SessionOk";
-	// }
-
 	@ResponseBody
 	@RequestMapping("/session")
     public MemberVo session(HttpServletRequest request) {
@@ -73,58 +62,36 @@ public class MemberController {
 		MemberVo member = (MemberVo) session.getAttribute("member");
 		// logger.info(member.getMemId());
 		return member;
-}
-
-//logout
-@ResponseBody
-@RequestMapping(value="/logout")
-public String logout(MemberVo member, HttpSession session) {
-	session.invalidate();
-	return "logout_success";
-}
-
-	// // Join
-	// @RequestMapping(value = "/joinForm")
-	// public String joinForm(@ModelAttribute("member") MemberVo member){
-	// 	return "member/joinForm";
-	// }
-
-	// @RequestMapping(value = "/join", method = RequestMethod.POST)
-	// public String joinReg(@ModelAttribute("member") MemberVo member) {	
-	// 	service.memberRegister(member);
-	// 	return "/member/joinOk";
-	// }
-	
-	// //login
-	// @RequestMapping(value = "/loginForm")
-	// public String loginForm(@ModelAttribute("member") MemberVo member) {
-	// 	return "member/loginForm";
-	// }
-	
-
-	
-	//modify
-	@RequestMapping(value = "/modifyForm")
-	public ModelAndView modifyForm(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		MemberVo member = (MemberVo) session.getAttribute("member");
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("member", service.memberSearch(member));
-		
-		mav.setViewName("/member/modifyForm");
-		
-		return mav;
 	}
+
+	//logout
+	@ResponseBody
+	@RequestMapping(value="/logout")
+	public String logout(MemberVo member, HttpSession session) {
+		session.invalidate();
+		return "logout_success";
+	}
+
+	//modify
+	@ResponseBody
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(@ModelAttribute("member") MemberVo member) {
+	public String modify(@RequestBody MemberVo member) {
 		int result = service.memberModify(member);
 		if(result == 0) {
 			logger.info("fail");
-			return "/member/modifyForm";
+			return "fail";
 		}
-		return "member/modifyOk";
+		return "success";
+	}
+
+	@RequestMapping(value = "/modifyForm")
+	public ModelAndView modifyForm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberVo member = (MemberVo) session.getAttribute("member");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("member", service.memberSearch(member));
+		mav.setViewName("/member/modifyForm");
+		return mav;
 	}
 
 }
