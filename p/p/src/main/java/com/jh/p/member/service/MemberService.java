@@ -33,4 +33,9 @@ public class MemberService implements IMemberService {
 		return dao.memberModify(member);
 	}
 
+	@Override
+	public void memberDelete(MemberVo member) {
+		dao.memberDelete(member);
+	}
+
 }

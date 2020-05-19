@@ -4,6 +4,7 @@ import com.jh.p.member.vo.MemberVo;
 
 public interface IMemberDao {
 	void memberInsert(MemberVo member);
+	void memberDelete(MemberVo member);
 	int memberModify(MemberVo member);
 	MemberVo memberSelect(MemberVo member);
 }

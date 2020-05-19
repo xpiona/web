@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="board">
+
+	<insert id="insert" parameterType="com.jh.p.board.vo.BoardVo">
+        INSERT INTO BOARD (BNO, TITLE, CONTENT, WRITER, REGDATE, VIEWCNT) VALUES
+        (#{bno, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, #{writer, jdbcType=VARCHAR}
+        , #{regdate, jdbcType=VARCHAR}, #{viewcnt, jdbcType=VARCHAR})
+    </insert>
+    
+    <select id="search" parameterType="com.jh.p.board.vo.BoardVo" resultType="com.jh.p.board.vo.BoardVo">
+        SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, VIEWCNT
+        FROM BOARD
+    	WHERE BNO = #{bno, jdbcType=VARCHAR}
+    </select>
+    
+    
+	<update id="modify" parameterType="com.jh.p.board.vo.BoardVo">
+        UPDATE BOARD
+        SET
+            TITLE = #{title, jdbcType=VARCHAR}, CONTENT = #{content, jdbcType=VARCHAR}
+        WHERE BNO = #{bno, jdbcType=VARCHAR}
+	</update>
+	
+	<delete id="delete">
+        delete from BOARD
+        where BNO = #{bno, jdbcType=VARCHAR}
+	</delete>
+
+</mapper>

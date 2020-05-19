@@ -27,4 +27,10 @@ public class MemberDao implements IMemberDao {
 	public MemberVo memberSelect(MemberVo member) {
 		return sqlSession.selectOne("member.search", member);
 	}
+
+	@Override
+	public void memberDelete(MemberVo member) {
+		sqlSession.insert("member.delete", member);
+	}
+	
 }

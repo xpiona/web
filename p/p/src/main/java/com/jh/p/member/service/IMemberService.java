@@ -6,4 +6,5 @@ public interface IMemberService {
 	void memberRegister(MemberVo member);
 	MemberVo memberSearch(MemberVo member);
 	int memberModify(MemberVo member);
+	void memberDelete(MemberVo member);
 }

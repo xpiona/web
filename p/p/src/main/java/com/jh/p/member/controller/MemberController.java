@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+// import org.springframework.web.servlet.ModelAndView;
 import com.jh.p.member.controller.MemberController;
 import com.jh.p.member.service.MemberService;
 import com.jh.p.member.vo.MemberVo;
@@ -48,7 +48,7 @@ public class MemberController {
 
 	@ResponseBody
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String join(@RequestBody MemberVo member, HttpSession session) {
+	public String join(@RequestBody MemberVo member) {
 		logger.info("=============================JOIN=================================");
 		service.memberRegister(member);
 		return "join_Success";
@@ -84,14 +84,22 @@ public class MemberController {
 		return "success";
 	}
 
-	@RequestMapping(value = "/modifyForm")
-	public ModelAndView modifyForm(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		MemberVo member = (MemberVo) session.getAttribute("member");
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("member", service.memberSearch(member));
-		mav.setViewName("/member/modifyForm");
-		return mav;
-	}
+	// @RequestMapping(value = "/modifyForm")
+	// public ModelAndView modifyForm(HttpServletRequest request) {
+	// 	HttpSession session = request.getSession();
+	// 	MemberVo member = (MemberVo) session.getAttribute("member");
+	// 	ModelAndView mav = new ModelAndView();
+	// 	mav.addObject("member", service.memberSearch(member));
+	// 	mav.setViewName("/member/modifyForm");
+	// 	return mav;
+	// }
+
+	//delete
+	@ResponseBody
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(@RequestBody MemberVo member) {
+		service.memberDelete(member);
+		return "success";
+	}		
 
 }

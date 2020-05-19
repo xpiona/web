@@ -8,7 +8,7 @@ class About extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      word: null,
+      id: null,
       IsLoggedIn : true
     };
   }
@@ -31,7 +31,7 @@ class About extends Component{
       console.log("aaaaaaaaaa");
       console.log(data);
       this.setState({
-        word : data,
+        id : data,
         IsLoggedIn : true
       });
       // return data;
@@ -59,6 +59,31 @@ class About extends Component{
     }
   }
 
+  async delete(){
+    var _id = this.state.id;
+    let url = '/member/delete';
+    let options = {
+      method : 'POST',
+      url : url,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      data: {
+          memId: _id
+      }
+    }
+    let response = await axios(options);
+    let responseOK = response && response.status === 200 && response.statusText === 'OK';
+    if (responseOK) {
+      let data = await response.data;
+      console.log(data);
+      this.setState({
+        IsLoggedIn : false
+      });
+    }
+  }
+
     render(){
 
       if(this.state.IsLoggedIn === false){
@@ -67,8 +92,9 @@ class About extends Component{
 
       return( 
         <div>
-          Hi, {this.state.word} 로그인 되었습니다.
+          Hi, {this.state.id} 로그인 되었습니다.
           <Button onClick = {this.logout.bind(this)}> 로그아웃 </Button>
+          <Button onClick = {this.delete.bind(this)}> 삭제 </Button>
           <Link to="/MemberModifyForm">MemberModifyForm</Link>
         </div>
       );

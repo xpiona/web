@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE MEMBER SET MEMPW = #{memPw, jdbcType=VARCHAR} WHERE MEMID = #{memId, jdbcType=VARCHAR}
 	</update>
 	
+	<delete id="delete">
+		delete from MEMBER where MEMID = #{memId, jdbcType=VARCHAR}
+	</delete>
+
 </mapper>
