@@ -1,5 +1,7 @@
 package com.jh.p.board.controller;
 
+import java.util.List;
+
 import com.jh.p.board.service.BoardService;
 import com.jh.p.board.vo.BoardVo;
 
@@ -21,6 +23,13 @@ public class BoardController {
     @Autowired
     BoardService service;
 
+	@ResponseBody
+	@RequestMapping(value = "/showall", method = RequestMethod.POST)
+	public List<BoardVo> showall() throws Exception {
+		logger.info("=============================showall=================================");
+		return service.boardShowAll();
+	}
+
     @ResponseBody
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String join(@RequestBody BoardVo board) {
@@ -29,5 +38,6 @@ public class BoardController {
 		return "Create_Success";
 	}
 
+	
 
 }
